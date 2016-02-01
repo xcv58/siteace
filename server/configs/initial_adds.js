@@ -5,7 +5,8 @@ export default function () {
     for (let lc = 1; lc <= 5; lc++) {
       const url = `This is the website url: ${lc}`;
       const desc = `Website ${lc}'s content is great!`;
-      Websites.insert({url, desc});
+      const [upvotes, downvotes] = [[], []];
+      Websites.insert({url, desc, upvotes, downvotes});
     }
   }
 };

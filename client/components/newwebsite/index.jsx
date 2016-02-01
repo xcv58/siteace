@@ -7,7 +7,6 @@ import React from 'react';
 
 class NewWebsite extends React.Component {
   render() {
-    console.log(this.props);
     const {error} = this.props;
     return (
       <div className="new-post">
@@ -23,8 +22,6 @@ class NewWebsite extends React.Component {
 
   createWebsite() {
     const {create} = this.props;
-    console.log(this.props);
-    console.log(create);
     const {titleRef, contentRef} = this.refs;
 
     create(titleRef.value, contentRef.value);

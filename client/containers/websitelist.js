@@ -10,7 +10,13 @@ export const composer = ({context}, onData) => {
   }
 };
 
+export const depsMapper = (context, actions) => ({
+  upvote: actions.updownvote.upvote,
+  downvote: actions.updownvote.downvote,
+  context: () => context
+});
+
 export default composeAll(
   composeWithTracker(composer),
-  useDeps()
+  useDeps(depsMapper)
 )(WebsiteList);

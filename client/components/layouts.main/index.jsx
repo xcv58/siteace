@@ -7,8 +7,8 @@ const Layout = ({content = () => null }) => (
     <Navigation />
     </header>
 
-    <div className="row">
-    {content()}
+    <div className="container">
+      {content()}
     </div>
 
     <footer>

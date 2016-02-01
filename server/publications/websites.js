@@ -5,7 +5,7 @@ import {check} from 'meteor/check';
 Meteor.publish('websites.list', function () {
   const selector = {};
   const options = {
-    fields: {_id: 1, desc: 1, url: 1},
+    fields: {_id: 1, desc: 1, url: 1, upvotes: 1, downvotes: 1},
     sort: {createdAt: -1},
     limit: 10
   };
