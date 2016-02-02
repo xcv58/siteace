@@ -14,38 +14,47 @@ class Website extends React.Component {
     const {website, Meteor, actions: {upvote, downvote}} = this.props;
     const {upvotes, downvotes} = website;
     const userId = Meteor.userId();
-    const hasUpvote = upvotes.includes(userId)
-    const hasDownvote = downvotes.includes(userId);
+    const upvoteStyle = upvotes.includes(userId) ? {
+      "color": "#FF8B5A"
+    } : {};
+    const downvoteStyle = downvotes.includes(userId) ? {
+      "color": "#958FFF"
+    } : {};
+    const margin = "-16px";
+    const numStyle = {"margin-top": margin, "margin-bottom": margin};
+
     return (
       <div className="col s12 l4">
         <div className="row center-align">
           <img src="https://pbs.twimg.com/profile_images/527039622434418688/uJPMDhZq.png" />
         </div>
         <div className="row">
-          <a href={`/website/${website._id}`}>{website.url}</a>
+          <div className="col s2">
+          <div className="row">
+            <div className="col s12">
+            <i onClick={this.up.bind(this)}
+               style={upvoteStyle}
+               className="waves-effect waves-light zmdi zmdi-chevron-up zmdi-hc-4x">
+            </i>
+            </div>
+            <div className="col s12" style={numStyle}>
+               <i style={upvoteStyle}>+{upvotes.length} </i>
+               <i style={downvoteStyle}>-{downvotes.length}</i>
+            </div>
+            <div className="col s12">
+            <i onClick={this.down.bind(this)}
+               style={downvoteStyle}
+               className="waves-effect waves-light zmdi zmdi-chevron-down zmdi-hc-4x">
+            </i>
+            </div>
+          </div>
+          </div>
+          <div className="col s10">
+            <a href={`/website/${website._id}`}>{website.url}</a>
+          </div>
         </div>
         <div className="row">
           <p>{website.desc}</p>
-        </div>
-        <div className="row">
-          <div className="col s6">
-            <button
-              disabled={!userId}
-              onClick={this.up.bind(this)} className="btn">
-              Up
-              {hasUpvote ? " yes " : null}
-              <span> {upvotes.length}</span>
-            </button>
-          </div>
-          <div className="col s6">
-            <button
-              disabled={!userId}
-              onClick={this.down.bind(this)} className="btn">
-              Down
-              {hasDownvote ? " yes " : null}
-              <span> {downvotes.length}</span>
-            </button>
-          </div>
         </div>
       </div>
     );
