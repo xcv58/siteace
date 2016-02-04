@@ -1,5 +1,5 @@
 export default {
-  create({Meteor, LocalState, FlowRouter}, url, desc) {
+  create({Meteor, LocalState, FlowRouter}, url, desc, title) {
     if (!url || !desc) {
       return LocalState.set('SAVING_ERROR', 'Url & Description are required!');
     }
@@ -12,7 +12,7 @@ export default {
     const createdAt = new Date();
     const [upvotes, downvotes] = [[], []];
     // TODO: add owner for website
-    const website = {_id, url, desc, upvotes, downvotes, createdAt};
+    const website = {_id, title, url, desc, upvotes, downvotes, createdAt};
     Meteor.call('websites.create', website, (err) => {
       if (err) {
         return LocalState.set('SAVING_ERROR', err.message);

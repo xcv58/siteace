@@ -12,18 +12,22 @@ class NewWebsite extends React.Component {
     console.log(urlValid);
     return (
       <div className="new-post">
-        <h2>Add New Post</h2>
+        <h2>Add New Website</h2>
         {error ? <p style={{color: 'red'}}>{error}</p> : null}
 
+        <input ref="titleRef"
+        type="Text"
+        disabled={!user}
+        placeholder="Title" /> <br/>
         <input ref="urlRef"
         onChange={this.handelChange.bind(this)}
         type="Text"
         disabled={!user}
-        placeholder="Enter website url." /> <br/>
+        placeholder="URL" /> <br/>
         <textarea ref="descRef"
         disabled={!user}
         className="materialize-textarea"
-        placeholder="Enter website description." /> <br/>
+        placeholder="Description" /> <br/>
         <button onClick={this.createWebsite.bind(this)}
         disabled={!urlValid}
         className="waves-effect waves-light btn">Add New</button>
@@ -33,9 +37,9 @@ class NewWebsite extends React.Component {
 
   createWebsite() {
     const {create} = this.props;
-    const {urlRef, descRef} = this.refs;
+    const {titleRef, urlRef, descRef} = this.refs;
 
-    create(urlRef.value, descRef.value);
+    create(urlRef.value, descRef.value, titleRef.value);
   }
 }
 
