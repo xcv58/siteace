@@ -1,6 +1,5 @@
 export default {
   upvote({Meteor}, websiteId) {
-    console.log("upvote");
     if (!Meteor.userId()) {
       return;
     }
@@ -11,7 +10,6 @@ export default {
     });
   },
   downvote({Meteor}, websiteId) {
-    console.log("downvote");
     if (!Meteor.userId()) {
       return;
     }
