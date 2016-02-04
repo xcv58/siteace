@@ -9,7 +9,6 @@ class NewWebsite extends React.Component {
   render() {
     const {error, user} = this.props;
     const {urlValid} = this.state || {urlValid: false};
-    console.log(urlValid);
     return (
       <div className="new-post">
         <h2>Add New Website</h2>
