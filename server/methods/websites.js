@@ -28,7 +28,7 @@ Meteor.methods({
     check(downvotes, [String]);
     check(createdAt, Date);
 
-    const website = {_id, url, desc, upvotes, downvotes};
+    const website = {_id, url, desc, upvotes, downvotes, createdAt};
     // Show the latency compensations
     Meteor._sleepForMs(500);
 
@@ -36,8 +36,6 @@ Meteor.methods({
     Websites.insert(website);
   },
   'websites.upvote'(websiteId) {
-    console.log('server upvote');
-    Meteor._sleepForMs(2000);
     check(websiteId, String);
     const userId = checkLogin();
     const website = checkWebsite(websiteId);

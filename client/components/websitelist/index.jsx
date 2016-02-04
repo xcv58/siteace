@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class Website extends React.Component {
   up() {
@@ -21,40 +22,47 @@ class Website extends React.Component {
       "color": "#958FFF"
     } : {};
     const margin = "-16px";
-    const numStyle = {"margin-top": margin, "margin-bottom": margin};
+    const numStyle = {"marginTop": margin, "marginBottom": margin};
+    console.log(website);
+    console.log(website.createdAt);
 
     return (
-      <div className="col s12 l4">
+      <div className="col s12 l4 website-item">
         <div className="row center-align">
           <img src="https://pbs.twimg.com/profile_images/527039622434418688/uJPMDhZq.png" />
         </div>
         <div className="row">
           <div className="col s2">
-          <div className="row">
+            <div className="row">
+              <div className="col s12">
+                <i onClick={this.up.bind(this)}
+                style={upvoteStyle}
+                className="waves-effect waves-light zmdi zmdi-chevron-up zmdi-hc-4x">
+                </i>
+              </div>
+              <div className="col s12" style={numStyle}>
+                <i style={upvoteStyle}>+{upvotes.length} </i>
+                <i style={downvoteStyle}>-{downvotes.length}</i>
+              </div>
+              <div className="col s12">
+                <i onClick={this.down.bind(this)}
+                style={downvoteStyle}
+                className="waves-effect waves-light zmdi zmdi-chevron-down zmdi-hc-4x">
+                </i>
+              </div>
+            </div>
+          </div>
+          <div className="row col s10">
             <div className="col s12">
-            <i onClick={this.up.bind(this)}
-               style={upvoteStyle}
-               className="waves-effect waves-light zmdi zmdi-chevron-up zmdi-hc-4x">
-            </i>
-            </div>
-            <div className="col s12" style={numStyle}>
-               <i style={upvoteStyle}>+{upvotes.length} </i>
-               <i style={downvoteStyle}>-{downvotes.length}</i>
+              <a href={`/website/${website._id}`}>{website.url}</a>
             </div>
             <div className="col s12">
-            <i onClick={this.down.bind(this)}
-               style={downvoteStyle}
-               className="waves-effect waves-light zmdi zmdi-chevron-down zmdi-hc-4x">
-            </i>
+              <p>{website.desc}</p>
+            </div>
+            <div className="col s12">
+              <p>Created: {website.createdAt.toLocaleString()}</p>
             </div>
           </div>
-          </div>
-          <div className="col s10">
-            <a href={`/website/${website._id}`}>{website.url}</a>
-          </div>
-        </div>
-        <div className="row">
-          <p>{website.desc}</p>
         </div>
       </div>
     );
@@ -75,7 +83,11 @@ class WebsiteList extends React.Component {
     );
     return (
       <div className="row">
-        {list}
+        <ReactCSSTransitionGroup transitionName="example"
+        transitionAppear={true} transitionAppearTimeout={500}
+        transitionEnterTimeout={500} transitionLeaveTimeout={300}>
+          {list}
+        </ReactCSSTransitionGroup>
       </div>
     );
   }

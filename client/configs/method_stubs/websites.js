@@ -30,7 +30,7 @@ export default function () {
       check(createdAt, Date);
 
       const website = {
-        _id, url, desc, upvotes, downvotes,
+        _id, url, desc, upvotes, downvotes, createdAt,
         saving: true
       };
 

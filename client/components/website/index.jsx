@@ -1,4 +1,28 @@
 import React from 'react';
+import ReactDisqusThread from 'react-disqus-thread';
+
+class Comment extends React.Component {
+    handleNewComment(comment) {
+        console.log(comment.text);
+    }
+    componentDidMount() {
+      const url = window.location.href;
+      if (DISQUS) {
+        DISQUS.reset({
+          reload: true,
+          config: function () {
+            this.page.identifier = this.props.id;
+            this.page.url = url;
+          }
+        });
+      }
+    }
+    render() {
+      return (
+        <div id="disqus_thread"></div>
+      );
+    }
+}
 
 const Website = ({website}) => (
   <div>
@@ -7,6 +31,9 @@ const Website = ({website}) => (
     <p>
       {website.desc}
     </p>
+    <div className="container">
+      <Comment id={website._id}/>
+    </div>
   </div>
 );
 

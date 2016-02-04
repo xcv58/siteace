@@ -3,10 +3,13 @@ import {useDeps} from 'react-simple-di';
 import {composeWithTracker, composeAll} from 'react-komposer';
 
 export const composer = ({context, clearErrors}, onData) => {
-  console.log('composer NewWebsite');
-  const {LocalState} = context();
-  const error = LocalState.get('SAVING_ERROR');
-  onData(null, {error});
+
+  const {LocalState, Meteor} = context();
+  if (Meteor.subscribe('users').ready()) {
+    const user = Meteor.users.findOne();
+    const error = LocalState.get('SAVING_ERROR');
+    onData(null, {user, error});
+  }
 
   // clearErrors when unmounting the component
   return clearErrors;
