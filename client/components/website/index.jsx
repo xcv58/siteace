@@ -29,10 +29,11 @@ class Comment extends React.Component {
 const Website = ({website}) => (
   <div>
     {website.saving ? <p>Saving...</p> : null}
-    <h2>{website.url}</h2>
+    <h3>{website.title}</h3>
     <p>
       {website.desc}
     </p>
+    <a href={website.url}>{website.url}</a>
     <div className="container">
       <Comment id={website._id}/>
     </div>

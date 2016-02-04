@@ -21,8 +21,9 @@ const checkWebsite = (websiteId) => {
 
 export default function () {
   Meteor.methods({
-    'websites.create'({_id, url, desc, upvotes, downvotes, createdAt}) {
+    'websites.create'({_id, title = 'No title', url, desc, upvotes, downvotes, createdAt}) {
       check(_id, String);
+      check(title, String);
       check(url, String);
       check(desc, String);
       check(upvotes, [String]);
@@ -30,7 +31,7 @@ export default function () {
       check(createdAt, Date);
 
       const website = {
-        _id, url, desc, upvotes, downvotes, createdAt,
+        _id, title, url, desc, upvotes, downvotes, createdAt,
         saving: true
       };
 

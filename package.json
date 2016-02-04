@@ -28,7 +28,7 @@
     "react-addons-test-utils": ">=0.14.3 <=0.15.0",
     "react-disqus-thread": "^0.3.1",
     "sinon": "1.17.x",
-    "valid-url": "^1.0.9"
+    "validator": "^4.6.1"
   },
   "dependencies": {
     "domready": "^1.0.8",

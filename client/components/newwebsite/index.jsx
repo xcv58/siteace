@@ -1,14 +1,22 @@
 import React from 'react';
+import validator from 'validator';
 
 class NewWebsite extends React.Component {
+  handelChange(event) {
+    const url = event.target.value;
+    this.setState({urlValid: validator.isURL(url)});
+  }
   render() {
     const {error, user} = this.props;
+    const {urlValid} = this.state || {urlValid: false};
+    console.log(urlValid);
     return (
       <div className="new-post">
         <h2>Add New Post</h2>
         {error ? <p style={{color: 'red'}}>{error}</p> : null}
 
         <input ref="urlRef"
+        onChange={this.handelChange.bind(this)}
         type="Text"
         disabled={!user}
         placeholder="Enter website url." /> <br/>
@@ -17,6 +25,7 @@ class NewWebsite extends React.Component {
         className="materialize-textarea"
         placeholder="Enter website description." /> <br/>
         <button onClick={this.createWebsite.bind(this)}
+        disabled={!urlValid}
         className="waves-effect waves-light btn">Add New</button>
       </div>
     );

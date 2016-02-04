@@ -3,7 +3,6 @@ export default {
     if (!url || !desc) {
       return LocalState.set('SAVING_ERROR', 'Url & Description are required!');
     }
-    // TODO: check url
 
     LocalState.set('SAVING_ERROR', null);
 
@@ -19,7 +18,7 @@ export default {
         return LocalState.set('SAVING_ERROR', err.message);
       }
     });
-    FlowRouter.go(`/website/${id}`);
+    FlowRouter.go(`/website/${_id}`);
   },
 
   clearErrors({LocalState}) {

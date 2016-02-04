@@ -25,7 +25,7 @@ class Website extends React.Component {
     const numStyle = {"marginTop": margin, "marginBottom": margin};
 
     return (
-      <div className="col s12 l4 website-item">
+      <div className="col s12 l6 website-item">
         <div className="row center-align">
           <img src="https://pbs.twimg.com/profile_images/527039622434418688/uJPMDhZq.png" />
         </div>
@@ -52,10 +52,13 @@ class Website extends React.Component {
           </div>
           <div className="row col s10">
             <div className="col s12">
-              <a href={`/website/${website._id}`}>{website.url}</a>
+              <a href={`/website/${website._id}`}>{website.title}</a>
             </div>
             <div className="col s12">
               <p>{website.desc}</p>
+            </div>
+            <div className="col s12">
+              <a className="truncate" href={`${website.url}`}>{website.url}</a>
             </div>
             <div className="col s12">
               <p>Created: {website.createdAt.toLocaleString()}</p>

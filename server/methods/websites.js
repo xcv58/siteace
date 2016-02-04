@@ -20,15 +20,16 @@ const checkWebsite = (websiteId) => {
 }
 
 Meteor.methods({
-  'websites.create'({_id, url, desc, upvotes, downvotes, createdAt}) {
+  'websites.create'({_id, title = 'No title', url, desc, upvotes, downvotes, createdAt}) {
     check(_id, String);
+    check(title, String);
     check(url, String);
     check(desc, String);
     check(upvotes, [String]);
     check(downvotes, [String]);
     check(createdAt, Date);
 
-    const website = {_id, url, desc, upvotes, downvotes, createdAt};
+    const website = {_id, title, url, desc, upvotes, downvotes, createdAt};
 
     // XXX: Do some user authorization
     Websites.insert(website);

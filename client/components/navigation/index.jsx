@@ -47,8 +47,7 @@ class Navigation extends React.Component {
     ];
     if (this.props.user) {
       navLinks.push(
-        {name: "New Website", href: "/new-website"},
-        {name: "Profile", href: "/profile"},
+        {name: "New Website", href: "/new-website"}
       )
     };
     return navLinks.map((link) => {
