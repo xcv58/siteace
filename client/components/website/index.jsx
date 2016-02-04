@@ -15,6 +15,8 @@ class Comment extends React.Component {
             this.page.url = url;
           }
         });
+      } else {
+        // TODO: inject js file.
       }
     }
     render() {

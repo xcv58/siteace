@@ -3,6 +3,7 @@ export default {
     if (!url || !desc) {
       return LocalState.set('SAVING_ERROR', 'Url & Description are required!');
     }
+    // TODO: check url
 
     LocalState.set('SAVING_ERROR', null);
 
@@ -11,6 +12,7 @@ export default {
     // That's how we are doing latency compensation
     const createdAt = new Date();
     const [upvotes, downvotes] = [[], []];
+    // TODO: add owner for website
     const website = {_id, url, desc, upvotes, downvotes, createdAt};
     Meteor.call('websites.create', website, (err) => {
       if (err) {
