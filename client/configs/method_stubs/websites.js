@@ -37,7 +37,6 @@ export default function () {
       Websites.insert(website);
     },
     'websites.upvote'(websiteId) {
-      console.log('client upvote');
       check(websiteId, String);
       const userId = checkLogin();
       const website = checkWebsite(websiteId);

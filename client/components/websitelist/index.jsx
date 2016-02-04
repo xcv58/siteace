@@ -23,8 +23,6 @@ class Website extends React.Component {
     } : {};
     const margin = "-16px";
     const numStyle = {"marginTop": margin, "marginBottom": margin};
-    console.log(website);
-    console.log(website.createdAt);
 
     return (
       <div className="col s12 l4 website-item">

@@ -29,8 +29,6 @@ Meteor.methods({
     check(createdAt, Date);
 
     const website = {_id, url, desc, upvotes, downvotes, createdAt};
-    // Show the latency compensations
-    Meteor._sleepForMs(500);
 
     // XXX: Do some user authorization
     Websites.insert(website);

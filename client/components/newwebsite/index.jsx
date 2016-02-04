@@ -3,7 +3,6 @@ import React from 'react';
 class NewWebsite extends React.Component {
   render() {
     const {error, user} = this.props;
-    console.log(user);
     return (
       <div className="new-post">
         <h2>Add New Post</h2>

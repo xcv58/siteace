@@ -1,6 +1,5 @@
 export default {
   create({Meteor, LocalState, FlowRouter}, url, desc) {
-    console.log("create");
     if (!url || !desc) {
       return LocalState.set('SAVING_ERROR', 'Url & Description are required!');
     }
