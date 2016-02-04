@@ -6,7 +6,8 @@ export default function () {
       const url = `This is the website url: ${lc}`;
       const desc = `Website ${lc}'s content is great!`;
       const [upvotes, downvotes] = [[], []];
-      Websites.insert({url, desc, upvotes, downvotes});
+      const createdAt = new Date();
+      Websites.insert({url, desc, upvotes, downvotes, createdAt});
     }
   }
 };

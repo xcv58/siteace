@@ -20,19 +20,19 @@ const checkWebsite = (websiteId) => {
 }
 
 Meteor.methods({
-  'websites.create'(_id, url, desc) {
+  'websites.create'({_id, url, desc, upvotes, downvotes, createdAt}) {
     check(_id, String);
     check(url, String);
     check(desc, String);
+    check(upvotes, [String]);
+    check(downvotes, [String]);
+    check(createdAt, Date);
 
+    const website = {_id, url, desc, upvotes, downvotes};
     // Show the latency compensations
     Meteor._sleepForMs(500);
 
     // XXX: Do some user authorization
-    const createdAt = new Date();
-    const website = {
-      _id, url, desc, createdAt
-    };
     Websites.insert(website);
   },
   'websites.upvote'(websiteId) {
